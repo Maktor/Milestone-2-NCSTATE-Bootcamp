@@ -40,5 +40,5 @@ const MonthlySpending = () => {
       </div>
     );
   };
-  
-  export default MonthlySpending;
+
+export default MonthlySpending;

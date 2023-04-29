@@ -1,8 +1,14 @@
 // Mahdiyar Bahreman: https://iamtimsmith.com/blog/using-mongodb-with-express-js/ and https://dev.to/kjdowns/building-a-basic-api-using-express-node-and-mongodb-160f ahelped to set up connection to MongoDB
 
+const monthlySpendingRouter = require('./routes/monthlySpendingRouter');
+const payDayRouter = require('./routes/payDayRouter');
+
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+
+app.use('/api/monthlyspending', monthlySpendingRouter);
+app.use('/api/paymentschedule', payDayRouter);
 
 dotenv.config();
 
