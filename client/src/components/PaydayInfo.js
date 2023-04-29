@@ -1,32 +1,39 @@
-//TETSTTSTSTST
-
-
 import React, { useState, useEffect } from 'react';
-import '../styles/PaydayInfo.css';
+import "../styles/PaydayInfo.css";
 
-const PaydayInfo = () => {
-    const [dateOfPayment, setPaymentDate] = useState('');
+const PaymentSchedule = () => {
+  const [paymentDate, setPaymentDate] = useState('');
+  const [displayPaymentDate, setDisplayPaymentDate] = useState('');
 
   const handleChange = (event) => {
     setPaymentDate(event.target.value);
   };
 
-  const submitButton = () => {
-    if (dateOfPayment) {
-        localStorage.setItem("dateOfPayment", dateOfPayment);
+  const handleSubmit = () => {
+    if (paymentDate) {
+      localStorage.setItem('paymentDate', paymentDate);
+      setDisplayPaymentDate(paymentDate);
     } else {
-        alert("enter a valid date");
+      alert('Please enter a valid date');
     }
     setPaymentDate('');
   };
 
+  useEffect(() => {
+    const storedPaymentDate = localStorage.getItem('paymentDate');
+    if (storedPaymentDate) {
+      setDisplayPaymentDate(storedPaymentDate);
+    }
+  }, []);
+
   return (
     <div>
-        <h3>When do you get paid?</h3>
-        <input type="date" value={dateOfPayment} onChange={handleChange}/>
-        <button onClick={submitButton}>Enter</button>
+      <h2>Enter Your Payment Date</h2>
+      <input type="date" value={paymentDate} onChange={handleChange} />
+      <button onClick={handleSubmit}>Submit</button>
+      {displayPaymentDate && (<p>You get paid on: <strong>{displayPaymentDate}</strong></p>)}
     </div>
   );
 };
 
-export default PaydayInfo;
+export default PaymentSchedule;

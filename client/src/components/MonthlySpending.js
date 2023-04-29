@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import '../styles/MonthlySpending.css';
+import React, { useState, useEffect } from "react";
+import "../styles/MonthlySpending.css";
 
 const MonthlySpending = () => {
-    const [monthlyBudget, setMonthlyBudget] = useState('');
-    const [displayBudget, setDisplayBudget] = useState('');
+    const [monthlyBudget, setMonthlyBudget] = useState("");
+    const [displayBudget, setDisplayBudget] = useState("");
 
     const handleIt = (event) => {
         setMonthlyBudget(event.target.value);
@@ -13,16 +13,16 @@ const MonthlySpending = () => {
     const submitButton = () => {
         if (monthlyBudget && !isNaN(monthlyBudget)) {
           setDisplayBudget(monthlyBudget);
-          localStorage.setItem('monthlyBudget', monthlyBudget);
+          localStorage.setItem("monthlyBudget", monthlyBudget);
         } else {
-          alert('Please enter a valid amount');
+          alert("Please enter a valid amount");
         }
         setMonthlyBudget('');
       };
 
     // Use useEffect to locate and collect the entered budget from local storage (localStorage)
     useEffect(() => {
-        const storedLocallyBudget = localStorage.getItem('monthlyBudget');
+        const storedLocallyBudget = localStorage.getItem("monthlyBudget");
         if (storedLocallyBudget) {
           setDisplayBudget(storedLocallyBudget);
         }
