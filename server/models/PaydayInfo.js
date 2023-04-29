@@ -6,13 +6,13 @@ I forgot how to do this, so I looked it up and the code below was written with h
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const monthlySpendingSchema = new Schema({
+const payDayInfoSchema = new Schema({
     spending: { 
-        type: Number, 
+        type: Date, 
         required: true 
     },
   });
 
-  const monthlySpending = mongoose.model("monthlySpending", monthlySpendingSchema);
+  const payDay = mongoose.model("payDay", payDayInfoSchema);
 
-  module.exports = monthlySpending;
+  module.exports = payDay;

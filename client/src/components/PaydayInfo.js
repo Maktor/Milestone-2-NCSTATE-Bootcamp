@@ -31,7 +31,7 @@ const PaydayInfo = () => {
   //Displays the form in div
   return (
     <div>
-      <h2>Enter Your Payment Date</h2>
+      <h3>Enter Your Payment Date</h3>
       <input type="date" value={paymentDate} onChange={handleChange} />
       <button onClick={handleSubmit}>Submit</button>
       {
