@@ -1,5 +1,5 @@
-import React from 'react';
-import '../styles/ExpenseInput.css';
+import React from "react";
+import "../styles/ExpenseInput.css";
 
 const ExpenseInput = () => {};
 

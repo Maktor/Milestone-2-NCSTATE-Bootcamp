@@ -1,5 +1,5 @@
-import React from 'react';
-import '../styles/SpendingWarning.css';
+import React from "react";
+import "../styles/SpendingWarning.css";
 
 const SpendingWarning = () => {};
 

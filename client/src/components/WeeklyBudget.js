@@ -1,5 +1,5 @@
-import React from 'react';
-import '../styles/WeeklyBudget.css';
+import React from "react";
+import "../styles/WeeklyBudget.css";
 
 const WeeklyBudget = () => {};
 

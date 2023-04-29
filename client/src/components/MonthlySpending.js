@@ -17,7 +17,7 @@ const MonthlySpending = () => {
         } else {
           alert("Please enter a valid amount");
         }
-        setMonthlyBudget('');
+        setMonthlyBudget("");
       };
 
     // Use useEffect to locate and collect the entered budget from local storage (localStorage)
