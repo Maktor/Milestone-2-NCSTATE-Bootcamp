@@ -13,7 +13,7 @@ function App() {
   return (
      <div className="App">
         <header className="App-header">
-           {"TEST"}
+           {"Budget Calculation Application"}
         </header>
         <main>
            <MonthlySpending />
