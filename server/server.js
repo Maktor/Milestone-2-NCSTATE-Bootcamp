@@ -1,35 +1,73 @@
-// Mahdiyar Bahreman: https://iamtimsmith.com/blog/using-mongodb-with-express-js/ and https://dev.to/kjdowns/building-a-basic-api-using-express-node-and-mongodb-160f ahelped to set up connection to MongoDB
+// Thanks to https://iamtimsmith.com/blog/using-mongodb-with-express-js/ and https://medium.com/geekculture/build-and-deploy-a-web-application-with-react-and-node-js-express-bce2c3cfec32
 
-const monthlySpendingRouter = require('./routes/monthlySpendingRouter');
-const payDayRouter = require('./routes/payDayRouter');
-
+//Dependencies
 const express = require("express");
-const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 
-app.use('/api/monthlyspending', monthlySpendingRouter);
-app.use('/api/paymentschedule', payDayRouter);
-
-dotenv.config();
-
 const app = express();
-app.use(express.json());
 const PORT = process.env.PORT || 3000;
 
+require("dotenv").config();
+const path = require("path");
+
+//Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("MongoDB connected"))
+.catch((err) => console.error(err));
+
+//Connect the client side
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "../client/build")));
 
-app.get("/", (req, res) => {
-  res.send("API is running");
+//Mongoose Schema to define username and password
+const User = mongoose.model("User", new mongoose.Schema({
+  username: String,
+  password: String
+}), "users");
+
+
+//HTTP get to see if the server is running
+app.get("/", (res) => {
+  res.send("Server is running");
 });
 
-// Connecting to MongoDB
-const uri = process.env.MONGODB_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true});
-const connection = mongoose.connection;
-connection.once("open", () => {
-  console.log("Success! MongoDB is connected!");
+//Catches all routes
+app.get("*", (res) => {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
 
+//retrieve all user documents
+app.get("/api/users", async (res) => {
+  try {
+    const users = await User.find({});
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: "server error" });
+  }
+});
+
+// Login route
+app.post("/api/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  console.log("User input:", username, password);
+
+  try {
+    const user = await User.findOne({username});
+    console.log("Found user in database:", user);
+    if (!user || user.password !== password) {
+      return res.status(401).json({ message: "Invalid username or pass" });
+    }
+    res.status(200).json({ message: "successful login" });
+  } catch (error) {
+    res.status(500).json({ message: "server error" });
+  }
+});
+
+// Start the server
 app.listen(PORT, () => {
-  console.log(`Port: ${PORT}`);
+  console.log(`port ${PORT}`);
 });
