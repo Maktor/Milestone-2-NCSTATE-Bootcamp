@@ -10,21 +10,34 @@ function LoginPage() {
   //To navigate through various URL
   const navigate = useNavigate();
 
+
   const submitButton = async (event) => {
     event.preventDefault();
 
-    //POST request to the /api/login route using PORT 3001
-    const check = await fetch("http://localhost:3001/api/login", {
-      method: "POST",
-      headers: {"Content-Type": "application/json",},
-      body: JSON.stringify({username, password}),});
-    
-    //Code 200 to check if the request was successful
-    if (check.status === 200) {
-      navigate("/dashboard");
-      console.log("successful")
-    } else {
-      alert("unsuccessful");
+    //use try and catch to test
+    try {
+      // POST request to the /api/login route using PORT 3000
+      const check = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await check.json();
+  
+      console.log(data)
+
+      // Code 200 to check if the request was successful
+      if (check.ok) {
+        console.log(data.message);
+        navigate("/dashboard");
+      } else {
+        console.error(data.message);
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred during login. Please try again.");
     }
   };
 
