@@ -16,7 +16,7 @@ function LoginPage() {
 
     //use try and catch to test
     try {
-      // POST request to the /api/login route using PORT 3001
+      // POST request to the /api/login route using PORT 3000
       const check = await fetch("http://localhost:3000/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -25,6 +25,8 @@ function LoginPage() {
 
       const data = await check.json();
   
+      console.log(data)
+
       // Code 200 to check if the request was successful
       if (check.ok) {
         console.log(data.message);
