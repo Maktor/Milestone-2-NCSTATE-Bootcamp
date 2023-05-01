@@ -1,31 +1,18 @@
 import "./App.css";
 import React from "react";
-import MonthlySpending from "./components/MonthlySpending.js";
-import PaydayInfo from "./components/PaydayInfo";
-import NecessarySpendings from "./components/NecessarySpendings";
-import MonthSelection from "./components/MonthSelection";
-import DailyBudget from "./components/DailyBudget";
-import WeeklyBudget from "./components/WeeklyBudget";
-import ExpenseInput from "./components/ExpenseInput";
-import SpendingAlert from "./components/SpendingWarning";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import DashboardPage from "./pages/Dashboard/DashboardPage.js";
 
+//Using JSX. Controlling the routes
 function App() {
   return (
-     <div className="App">
-        <header className="App-header">
-           {"Budget Calculation Application"}
-        </header>
-        <main>
-           <MonthlySpending />
-           <PaydayInfo />
-           <NecessarySpendings />
-           <MonthSelection />
-           <DailyBudget />
-           <WeeklyBudget />
-           <ExpenseInput />
-           <SpendingAlert />
-        </main>
-     </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+      </Routes>
+    </Router>
   );
 }
 
