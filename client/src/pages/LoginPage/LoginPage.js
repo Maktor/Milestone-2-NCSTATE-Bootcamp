@@ -7,13 +7,15 @@ function LoginPage() {
   //To manage local state
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  //Registration
+  const [registerUsername, setRegisterUsername] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
   //To navigate through various URL
   const navigate = useNavigate();
 
 
-  const submitButton = async (event) => {
+  const loginButton = async (event) => {
     event.preventDefault();
-
     //use try and catch to test
     try {
       // POST request to the /api/login route using PORT 3000
@@ -24,7 +26,6 @@ function LoginPage() {
       });
 
       const data = await check.json();
-  
       console.log(data)
 
       // Code 200 to check if the request was successful
@@ -37,15 +38,48 @@ function LoginPage() {
       }
     } catch (error) {
       console.error("Error during login:", error);
-      alert("An error occurred during login. Please try again.");
+      alert("Registration error. Try again.");
+    }
+  };
+
+  const registerButton = async (event) => {
+    event.preventDefault();
+
+    try {
+      // POST request to the /api/register route using PORT 3000
+      const check = await fetch("http://localhost:3000/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: registerUsername, password: registerPassword }),
+      });
+
+      const data = await check.json();
+      console.log(data)
+
+      if (check.ok) {
+        console.log(data.message);
+        navigate("/dashboard");
+      } else {
+        console.error(data.message);
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+      alert("Registration error. Try again.");
     }
   };
 
   //Rendering form
   return (
     <div className="LoginPage">
+      <h1>Registration</h1>
+      <form onSubmit={registerButton}>
+        <input type="text" placeholder="Username" value={registerUsername} onChange={(e) => setRegisterUsername(e.target.value)}/>
+        <input type="password" placeholder="Password" value={registerPassword} onChange={(e) => setRegisterPassword(e.target.value)}/>
+        <button type="submit">Register</button>
+      </form>
       <h1>Login</h1>
-      <form onSubmit={submitButton}>
+      <form onSubmit={loginButton}>
         <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
         <button type="submit">Login</button>

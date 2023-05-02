@@ -36,12 +36,31 @@ app.get("/", (req, res) => {
   res.send("server is running");
 });
 
+//Function to validate what users enter
+function validation(validateData){
+  const emptyForm = [];
+
+  if (!validateData.username) {
+    emptyForm.push("username");
+  }
+  if (!validateData.password) {
+    emptyForm.push("password");
+  }
+
+  return emptyForm;
+}
+
 //Login route
 app.post("/api/login", async (req, res) => {
+
+  const emptyForm = validation(req.body);
+
+  if (emptyForm.length > 0) {
+    return res.status(400).json({ message: `Try again! Enter ${emptyForm.join(" and ")}!` });
+  }
+
   const { username, password } = req.body;
-
   console.log("User input:", username, password);
-
   try {
     const user = await User.findOne({username});
     console.log("Found user in database:", user);
@@ -51,6 +70,31 @@ app.post("/api/login", async (req, res) => {
     res.status(200).json({ message: "successful login" });
   } catch (error) {
     res.status(500).json({ message: "server error" });
+  }
+});
+
+app.post("/api/register", async (req, res) => {
+
+  const emptyForm = validation(req.body);
+
+  if (emptyForm.length > 0) {
+    return res.status(400).json({ message: `Try again! Enter ${emptyForm.join(" and ")}!` });
+  }
+  const { username, password } = req.body;
+  console.log("Registration user input:", username, password);
+
+  try {
+    const existingUser = await User.findOne({username});
+    if (existingUser) {
+      return res.status(409).json({ message: "Username already taken!" });
+    }
+  
+    const newUser = new User({username, password});
+    await newUser.save();
+    
+    res.status(201).json({message: "registration successful"});
+  } catch (error) {
+    res.status(500).json({message: "server error"});
   }
 });
 
