@@ -19,11 +19,7 @@ function LoginPage() {
     //use try and catch to test
     try {
       // POST request to the /api/login route using PORT 3000
-      const check = await fetch("http://localhost:3000/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      });
+      const check = await fetch("http://localhost:3000/api/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username, password }),});
 
       const data = await check.json();
       console.log(data)
@@ -36,10 +32,7 @@ function LoginPage() {
         console.error(data.message);
         alert(data.message);
       }
-    } catch (error) {
-      console.error("Error during login:", error);
-      alert("Registration error. Try again.");
-    }
+    } catch (error) {console.error("Error during login:", error); alert("Registration error. Try again.");}
   };
 
   const registerButton = async (event) => {
@@ -47,11 +40,7 @@ function LoginPage() {
 
     try {
       // POST request to the /api/register route using PORT 3000
-      const check = await fetch("http://localhost:3000/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: registerUsername, password: registerPassword }),
-      });
+      const check = await fetch("http://localhost:3000/api/register", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username: registerUsername, password: registerPassword }),});
 
       const data = await check.json();
       console.log(data)
@@ -63,9 +52,7 @@ function LoginPage() {
         console.error(data.message);
         alert(data.message);
       }
-    } catch (error) {
-      console.error("Error during registration:", error);
-      alert("Registration error. Try again.");
+    } catch (error) {console.error("Error during registration:", error);alert("Registration error. Try again.");
     }
   };
 
