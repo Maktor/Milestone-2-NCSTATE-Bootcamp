@@ -23,7 +23,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 //Mongoose Schema to define username and password
-const User = mongoose.model("User", new mongoose.Schema({ username: String, password: String}), "users");
+const User = mongoose.model("User", new mongoose.Schema({
+  username: String, 
+  password: String
+}), "users");
 
 //HTTP get to see if the server is running
 app.get("/", (req, res) => {
@@ -49,7 +52,7 @@ app.post("/api/login", async (req, res) => {
     return res.status(400).json({ message: `Try again! Enter ${emptyForm.join(" and ")}!` });
   }
 
-  const { username, password } = req.body;
+  const { username, password} = req.body;
   console.log("User input:", username, password);
 
   try {
