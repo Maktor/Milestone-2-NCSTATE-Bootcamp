@@ -1,6 +1,7 @@
 # BUDGET TRACKER
 Welcome to this MERN Application!
-NCSU Bootcamp Milestone 2 Project
+
+This application is developed by NCSU Bootcamp students for their Milestone Project #2
 
 # DEMO
 http://google.com (CHANGE)
