@@ -20,6 +20,7 @@ const submitButton = async (event) => {
 
     console.log(days)
     console.log(budget)
+    navigate("/budgetinput/necessaryspending")
   };
 
   // const addNecessarySpending = (event) => {
@@ -61,7 +62,7 @@ const submitButton = async (event) => {
       </select><br/><br/>
 
         Monthly Income: <input type="number" placeholder="Budget" value={budget} onChange={(e) => setBudget(e.target.value)}></input><br/><br/>
-        <button type="submit">Calculate</button><br/><br/>
+        <button type="submit">Continue</button><br/><br/>
       </form>
 
 {/* 
