@@ -73,20 +73,26 @@ app.post("/api/register", async (req, res) => {
     return res.status(400).json({ message: `Try again! Enter ${emptyForm.join(" and ")}!` });
   }
 
-  const { username, password } = req.body;
+  const { username, password} = req.body;
   console.log("Registration user input:", username, password);
 
   try {
     const existingUser = await User.findOne({username});
     if (existingUser) {
       return res.status(409).json({ message: "Username already taken!" });
-    }
-
-    const newUser = new User({username, password});
-    await newUser.save();
+    } else {
+      const newUser = new User({username, password});
+      console.log(newUser)
+      await newUser.save();
     
-    res.status(201).json({message: "registration successful"});
-  } catch (error) { res.status(500).json({message: "server error"});}
+      res.status(201).json({
+        message: "registration successful"});
+    }
+    
+  } catch (error) {
+    console.log("The error:", error)
+    res.status(500).json({message: error});
+  }
 });
 
 //Retrieve all user documents
