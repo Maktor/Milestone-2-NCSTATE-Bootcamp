@@ -1,4 +1,5 @@
 # BUDGET TRACKER
+
 Welcome to this MERN Application!
 NCSU Bootcamp Milestone 2 Project
 
@@ -6,6 +7,7 @@ NCSU Bootcamp Milestone 2 Project
 http://google.com (CHANGE)
 
 #PROJECT DESCRIPTION
+
 This project will help you to manage your expenses and help you budget your spending thought out the day, week, and month. You will have to register to use this application.
 
 #INSTALL
@@ -19,6 +21,7 @@ Ready to run!
 7. Save all the files and start with the server, run "npm start", then run the same command in the client terminal. BOOM!
 
 #FUTURE
+
 We plan to add more features and better UI/UX for a better experience. Visual charts are also another implementation we are planning to work on.
 
 # CREDITS
