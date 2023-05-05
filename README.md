@@ -3,14 +3,14 @@
 Welcome to this MERN Application!
 NCSU Bootcamp Milestone 2 Project
 
-#DEMO
+# DEMO
 http://google.com (CHANGE)
 
 #PROJECT DESCRIPTION
 
 This project will help you to manage your expenses and help you budget your spending thought out the day, week, and month. You will have to register to use this application.
 
-#INSTALL
+# INSTALL
 1. Clone this project into your local device or download the zip file.
 2. Open the project in your code editor (ex. VSC, Atom.)
 3. Open two terminal windows in the project.
@@ -20,7 +20,7 @@ This project will help you to manage your expenses and help you budget your spen
 Ready to run!
 7. Save all the files and start with the server, run "npm start", then run the same command in the client terminal. BOOM!
 
-#FUTURE
+# FUTURE
 
 We plan to add more features and better UI/UX for a better experience. Visual charts are also another implementation we are planning to work on.
 
