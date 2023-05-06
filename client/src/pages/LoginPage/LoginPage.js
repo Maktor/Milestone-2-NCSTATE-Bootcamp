@@ -43,15 +43,11 @@ const rincome = "2"
 
     try {
       // POST request to the /api/register route using PORT 3000
-<<<<<<< HEAD
       const check = await fetch("http://localhost:3000/api/register", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({
         username: registerUsername, 
         password: registerPassword,
       }),
     });
-=======
-      const check = await fetch("http://localhost:3000/api/register", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username: registerUsername, password: registerPassword}),});
->>>>>>> 41d980699f2e3a97902497adc22dd1bb9683a882
 
       console.log(username, password, rexpenses, rincome)
       const data = await check.json();

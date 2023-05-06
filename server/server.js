@@ -23,14 +23,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 //Mongoose Schema to define username and password
-<<<<<<< HEAD
 const User = mongoose.model("User", new mongoose.Schema({
   username: String, 
   password: String
 }), "users");
-=======
-const User = mongoose.model("User", new mongoose.Schema({ username: String, password: String, expenses: String, income: String}), "users");
->>>>>>> 41d980699f2e3a97902497adc22dd1bb9683a882
 
 //HTTP get to see if the server is running
 app.get("/", (req, res) => {
@@ -87,17 +83,10 @@ app.post("/api/register", async (req, res) => {
     const existingUser = await User.findOne({username});
     if (existingUser) {
       return res.status(409).json({ message: "Username already taken!" });
-<<<<<<< HEAD
     } else {
       const newUser = new User({username, password});
       console.log(newUser)
       await newUser.save();
-=======
-    }
-
-    const newUser = new User({username, password, expenses, income});
-    await newUser.save();
->>>>>>> 41d980699f2e3a97902497adc22dd1bb9683a882
     
       res.status(201).json({
         message: "registration successful"});
