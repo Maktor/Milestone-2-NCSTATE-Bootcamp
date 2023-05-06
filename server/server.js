@@ -111,3 +111,5 @@ app.get("*", (req, res) => { res.sendFile(path.join(__dirname, "../client/build"
 
 //Start the server
 app.listen(PORT, () => {console.log(`port ${PORT}`);});
+
+module.exports = app;
