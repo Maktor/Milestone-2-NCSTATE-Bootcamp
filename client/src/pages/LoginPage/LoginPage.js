@@ -25,7 +25,7 @@ const rincome = "2"
     try {
       // POST request to the /api/login route using PORT 3000
       //const check = await fetch("http://localhost:3000/api/login/", { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username, password}),});
-      const check = await fetch("https://milestone-2-ncstate-server.vercel.app/api/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username, password}),});
+      const check = await fetch("https://milestone-2-ncstate-server-1ib376eji-maktor.vercel.app/api/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username, password}),});
 
       const data = await check.json();
       console.log(data)
@@ -46,8 +46,8 @@ const rincome = "2"
 
     try {
       // POST request to the /api/register route using PORT 3000
-      const check = await fetch("https://milestone-2-ncstate-server.vercel.app/api/register", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({username: registerUsername, password: registerPassword,}),});
       //const check = await fetch("http://localhost:3000/api/register", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({username: registerUsername, password: registerPassword,}),});
+      const check = await fetch("https://milestone-2-ncstate-server-1ib376eji-maktor.vercel.app/api/register", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({username: registerUsername, password: registerPassword,}),})
 
 
       console.log(username, password, rexpenses, rincome)
@@ -69,13 +69,14 @@ const rincome = "2"
   //Rendering form
   return (
     <div className="LoginPage">
-      <h1>Registration</h1>
+      <h1>MERN Application</h1>
+      <h2>Registration</h2>
       <form onSubmit={registerButton}>
         <input type="text" placeholder="Username" value={registerUsername} onChange={(e) => setRegisterUsername(e.target.value)}/>
         <input type="password" placeholder="Password" value={registerPassword} onChange={(e) => setRegisterPassword(e.target.value)}/>
         <button type="submit">Register</button>
       </form>
-      <h1>Login</h1>
+      <h2>Login</h2>
       <form onSubmit={loginButton}>
         <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)}/>
         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
