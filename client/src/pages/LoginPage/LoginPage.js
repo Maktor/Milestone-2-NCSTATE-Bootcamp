@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./LoginPage.css";
+
 
 function LoginPage() {
   //To manage local state
@@ -22,8 +24,8 @@ const rincome = "2"
     //use try and catch to test
     try {
       // POST request to the /api/login route using PORT 3000
-      //const check = await fetch("http://localhost:3000/api/login/", { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username, password}),});
-      const check = await fetch("https://milestone-2-ncstate-server-1ib376eji-maktor.vercel.app/api/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username, password}),});
+      const check = await fetch("http://localhost:3000/api/login/", { method: "POST", mode: "cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username, password}),});
+      //const check = await fetch("https://milestone-2-ncstate-server-1ib376eji-maktor.vercel.app/api/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username, password}),});
 
       const data = await check.json();
       console.log(data)
@@ -44,11 +46,9 @@ const rincome = "2"
 
     try {
       // POST request to the /api/register route using PORT 3000
-      const check = await fetch("https://milestone-2-ncstate-server-1ib376eji-maktor.vercel.app/api/register", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({
-        username: registerUsername, 
-        password: registerPassword,
-      }),
-    });
+      //const check = await fetch("https://milestone-2-ncstate-server-1ib376eji-maktor.vercel.app/api/register", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({username: registerUsername, password: registerPassword,}),});
+      const check = await fetch("http://localhost:3000/api/register", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({username: registerUsername, password: registerPassword,}),});
+
 
       console.log(username, password, rexpenses, rincome)
       const data = await check.json();
