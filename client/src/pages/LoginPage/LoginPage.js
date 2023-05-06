@@ -69,7 +69,7 @@ const rincome = "2"
   //Rendering form
   return (
     <div className="LoginPage">
-      <h1>MERN Application</h1>
+      <h1>MERN Application</h1><br/>
       <h2>Registration</h2>
       <form onSubmit={registerButton}>
         <input type="text" placeholder="Username" value={registerUsername} onChange={(e) => setRegisterUsername(e.target.value)}/>
