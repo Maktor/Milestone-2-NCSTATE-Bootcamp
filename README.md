@@ -4,7 +4,7 @@ Welcome to this MERN Application!
 This application is developed by NCSU Bootcamp students for their Milestone Project #2
 
 # DEMO
-http://google.com (CHANGE)
+https://milestone-2.vercel.app
 
 # PROJECT DESCRIPTION
 This project will help you to manage your expenses and help you budget your spending thought out the day, week, and month. You will have to register to use this application.
