@@ -25,7 +25,10 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 //Mongoose Schema to define username and password
 const User = mongoose.model("User", new mongoose.Schema({
   username: String, 
-  password: String
+  password: String,
+  number: String,
+  income: { type: Number, default: 0 },
+  expenses: { type: Array, default: 0 }
 }), "users");
 
 //HTTP get to see if the server is running
@@ -76,15 +79,15 @@ app.post("/api/register", async (req, res) => {
     return res.status(400).json({ message: `Try again! Enter ${emptyForm.join(" and ")}!` });
   }
 
-  const { username, password} = req.body;
-  console.log("Registration user input:", username, password);
+  const { username, password, income, expenses} = req.body;
+  console.log("Registration user input:", username, password, income, expenses);
 
   try {
     const existingUser = await User.findOne({username});
     if (existingUser) {
       return res.status(409).json({ message: "Username already taken!" });
     } else {
-      const newUser = new User({username, password});
+      const newUser = new User({username, password, income, expenses});
       console.log(newUser)
       await newUser.save();
     
