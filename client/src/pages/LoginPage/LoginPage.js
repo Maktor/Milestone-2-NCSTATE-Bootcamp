@@ -22,7 +22,7 @@ const rincome = "2"
     //use try and catch to test
     try {
       // POST request to the /api/login route using PORT 3000
-      const check = await fetch("http://localhost:3000/api/login/", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username, password}),});
+      const check = await fetch("http://localhost:3000/api/login/", { method: "POST", mode: 'cors', headers: { "Content-Type": "application/json" }, body: JSON.stringify({ username, password}),});
 
       const data = await check.json();
       console.log(data)
