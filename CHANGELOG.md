@@ -1,7 +1,6 @@
 # [1.1] - 2023-07-08
-ADDED:
-- none
+ADDED: none
 
-CHANGED: 
+CHANGED:
 - Modified the README.md
 - Edited splash screen
