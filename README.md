@@ -1,13 +1,25 @@
 # BUDGET TRACKER
 Welcome to this MERN Application!
 
-This application is developed by NCSU Bootcamp students for their Milestone Project #2
+NCSU Bootcamp students develop this application for their Milestone Project #2
+
+# PROJECT DESCRIPTION
+By using this project, you will be able to effectively manage your expenses and budget your spending throughout the day, week, and month. To access this application, registration is required.
 
 # DEMO
 https://milestone-2.vercel.app
 
-# PROJECT DESCRIPTION
-This project will help you to manage your expenses and help you budget your spending thought out the day, week, and month. You will have to register to use this application.
+# TECHNOLOGIES
+- Front-end:
+✅ React
+✅ React-dom
+
+- Back-end:
+✅ Cors
+✅ Dotenv
+✅ Express
+✅ MongoDB
+✅ Mongoose
 
 # INSTALL
 1. Clone this project into your local device or download the zip file.
@@ -19,11 +31,11 @@ This project will help you to manage your expenses and help you budget your spen
 Ready to run!
 7. Save all the files and start with the server, run "npm start", then run the same command in the client terminal. BOOM!
 
-# FUTURE
-We plan to add more features and better UI/UX for a better experience. Visual charts are also another implementation we are planning to work on.
+# ISSUES
+Upon the initial loading of the website, the splash screen functions as intended. However, upon subsequent attempts, the logo fails to appear or experiences a delay in loading.
 
 # CREDITS
-Sources listed below were used in process of development of this project:
+Sources listed below were used in the process of development of this project:
 1. https://iamtimsmith.com/blog/using-mongodb-with-express-js/
 2. https://dev.to/kjdowns/building-a-basic-api-using-express-node-and-mongodb-160f
 3. https://medium.com/geekculture/build-and-deploy-a-web-application-with-react-and-node-js-express-bce2c3cfec32
